@@ -8,8 +8,11 @@ import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./pages/users/Home";
 import Channeling from "./pages/users/Channeling";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import DoctorProfile from "./pages/users/DoctorProfile";
 
 const App = () => {
+  const queryClient = new QueryClient({});
   const currentUser = true;
 
   const ProtectRoute = ({ children }) => {
@@ -52,14 +55,20 @@ const App = () => {
           path: "channeling",
           element: <Channeling />,
         },
+        {
+          path: "doctor/:id",
+          element: <DoctorProfile />,
+        },
       ],
     },
   ]);
 
   return (
-    <div className="select-none">
-      <RouterProvider router={router} />
-    </div>
+    <QueryClientProvider client={queryClient}>
+      <div className="select-none">
+        <RouterProvider router={router} />
+      </div>
+    </QueryClientProvider>
   );
 };
 

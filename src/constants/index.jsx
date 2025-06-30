@@ -16,13 +16,7 @@ import {
 } from "react-icons/fa";
 import { MdOutlineLocalHospital } from "react-icons/md";
 
-import {
-  FaStethoscope,
-  FaPills,
-  FaFileMedical,
-  FaLaptopMedical,
-  FaNotesMedical,
-} from "react-icons/fa";
+import { FaPills } from "react-icons/fa";
 
 export const Company = {
   name: "Arogya Hospitals (Pvt) Ltd",
@@ -119,5 +113,64 @@ export const Menu = [
     badge: "Try Now !",
     badgeColor: "success",
     link: "",
+  },
+];
+
+export const Doctors = [
+  {
+    id: 1,
+    name: "Dr. Suneth Karunarathna",
+    specialization: "Cardiologist",
+    gender: "male",
+    image: "default.png",
+  },
+  {
+    id: 2,
+    name: "Dr. Roshan Gunarathna",
+    specialization: "Cardiologist",
+    gender: "male",
+    image: "default.png",
+  },
+  {
+    id: 3,
+    name: "Dr. Damith Rodrigo",
+    specialization: "Chest Physician",
+    gender: "male",
+    image: "default.png",
+  },
+  {
+    id: 4,
+    name: "Dr. Nandika Harischandra",
+    specialization: "Chest Physician",
+    gender: "female",
+    image: "default.png",
+  },
+  {
+    id: 5,
+    name: "Dr. Saman Kularathna",
+    specialization: "Chest Physician",
+    gender: "male",
+    image: "default.png",
+  },
+  {
+    id: 6,
+    name: "Dr. D.M. Amarathunga",
+    specialization: "Dermatologist",
+    gender: "male",
+    image: "default.png",
+  },
+  {
+    id: 7,
+    name: "Dr. Fathima Hasmiya",
+    specialization: "Dermatologist",
+    gender: "female",
+    image: "default.png",
+  },
+  {
+    id: 8,
+    name: "Dr. Sanjeewa Hulangamuwa",
+    specialization: "Dermatologist",
+    gender: "female",
+    image: "default.png",
   },
 ];
