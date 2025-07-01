@@ -2,8 +2,10 @@ import { useParams } from "react-router-dom";
 import { makeRequest } from "../../axios";
 import { useQuery } from "@tanstack/react-query";
 import Timetable from "../../components/Timetable";
-import Skeleton from "../../components/Skeliton";
+import Skeleton from "../../components/Static/Skeliton";
 import { useEffect } from "react";
+import SessionBar from "../../components/Static/SessionBar";
+import Sessions from "../../components/Sessions";
 
 const DoctorProfile = () => {
   const { id: doctor_id } = useParams(); // Destructure params more cleanly
@@ -83,11 +85,7 @@ const DoctorProfile = () => {
         )}
       </div>
       <div className="sm:col-span-3">
-        {loading ? (
-          <Skeleton skfor={"Timetable"} />
-        ) : (
-          <Timetable doctor_id={doctor_id} name={data?.name || "Unknown"} />
-        )}
+        <Sessions />
       </div>
     </div>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import { Company } from "../constants";
+import { Company } from "../../constants";
 
 const Footer = () => {
   const Likns = [

@@ -3,7 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../axios";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
-import Skeleton from "./Skeliton";
+import Skeleton from "./Static/Skeliton";
 
 const Timetable = ({ doctor_id, name }) => {
   const { data, isLoading, isFetching } = useQuery({

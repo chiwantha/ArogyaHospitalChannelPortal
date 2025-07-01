@@ -1,5 +1,5 @@
-import IconButton from "../../components/IconButton";
-import TopImageContainer from "../../components/TopImageContainer";
+import IconButton from "../../components/Static/IconButton";
+import TopImageContainer from "../../components/Static/TopImageContainer";
 import { Company, Menu } from "../../constants";
 
 const Home = () => {

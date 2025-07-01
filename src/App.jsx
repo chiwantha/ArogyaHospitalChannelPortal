@@ -4,8 +4,8 @@ import {
   Outlet,
   RouterProvider,
 } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";
+import Navbar from "./components/Static/Navbar";
+import Footer from "./components/Static/Footer";
 import Home from "./pages/users/Home";
 import Channeling from "./pages/users/Channeling";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";

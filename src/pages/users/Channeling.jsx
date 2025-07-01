@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { Combobox } from "@headlessui/react";
 import { FaAngleDown } from "react-icons/fa6";
-import Button from "../../components/Button";
-import DoctorCard from "../../components/DoctorCard";
+import Button from "../../components/Static/Button";
+import DoctorCard from "../../components/Static/DoctorCard";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
-import LoadingBlock from "../../components/LoadingBlock";
-import Skeleton from "../../components/Skeliton";
+import Skeleton from "../../components/Static/Skeliton";
 
 const Channeling = () => {
   const { data: Specialization = [] } = useQuery({
