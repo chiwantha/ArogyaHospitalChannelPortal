@@ -83,7 +83,11 @@ const DoctorProfile = () => {
         )}
       </div>
       <div className="sm:col-span-3">
-        <Timetable doctor_id={doctor_id} name={data?.name || "Unknown"} />
+        {loading ? (
+          <Skeleton skfor={"Timetable"} />
+        ) : (
+          <Timetable doctor_id={doctor_id} name={data?.name || "Unknown"} />
+        )}
       </div>
     </div>
   );
