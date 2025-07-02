@@ -76,6 +76,58 @@ const Skeleton = ({ skfor }) => {
     );
   }
 
+  if (skfor === "SessionBar") {
+    return (
+      <div
+        className="relative w-full grid grid-cols-2 md:grid-cols-4
+      rounded-lg shadow-md border bg-slate-50 border-gray-300
+       hover:border-gray-500/40 transition-colors duration-300 p-4
+       space-y-4 md:space-y-0 animate-pulse"
+        role="region"
+        aria-label="Session Details"
+      >
+        {/* Left Indicator */}
+        <span
+          className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-8 rounded-r
+           bg-gray-400 "
+          aria-hidden="true"
+        />
+
+        {/* Day */}
+        <div className="flex flex-col items-center justify-center border-gray-300 sm:border-r col-span-2 sm:col-span-1">
+          <span className="text-lg font-extrabold w-4/12 rounded-lg bg-gray-200 p-2" />
+        </div>
+
+        {/* Time */}
+        <div
+          className="flex flex-col space-y-2 items-center justify-center
+           border-gray-300 border-r sm:border-0 md:border-r"
+        >
+          <span className="text-sm font-medium w-4/12 rounded-lg bg-gray-200 p-1" />
+          <span className="text-sm font-medium w-4/6 rounded-lg bg-gray-200 p-2" />
+          <span className="text-sm font-medium w-4/12 rounded-lg bg-gray-200 p-1" />
+        </div>
+
+        {/* Price */}
+        <div
+          className="flex flex-col items-center justify-center border-gray-300 
+        sm:border-r space-y-2"
+        >
+          <span className="text-sm font-medium w-4/12 rounded-lg bg-gray-200 p-1" />
+          <span className="text-sm font-medium w-4/6 rounded-lg bg-gray-200 p-2" />
+        </div>
+
+        {/* Book Now */}
+        <div
+          className="flex flex-col items-center justify-center col-span-2
+         mt-2 sm:mt-0 sm:col-span-1"
+        >
+          <span className="text-sm font-medium w-4/8 rounded-lg bg-gray-200 p-4" />
+        </div>
+      </div>
+    );
+  }
+
   return <div>No Skeleton!</div>;
 };
 

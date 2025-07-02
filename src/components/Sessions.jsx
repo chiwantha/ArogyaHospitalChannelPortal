@@ -1,11 +1,9 @@
 import SessionBar from "./Static/SessionBar";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../axios";
-import { useParams } from "react-router-dom";
+import Skeleton from "./Static/Skeliton";
 
-const Sessions = () => {
-  const { id: doctor_id } = useParams();
-
+const Sessions = ({ doctor_id }) => {
   const { data, isLoading, error } = useQuery({
     queryKey: ["sessionList"],
     queryFn: async () => {
@@ -14,20 +12,19 @@ const Sessions = () => {
       );
       return res;
     },
+    enabled: !!doctor_id,
   });
 
   return (
     <div className="flex flex-col gap-4">
-      {isLoading && !data ? (
-        <div></div>
-      ) : error ? (
-        error
-      ) : (
-        data &&
-        data.data.map((item, index) => (
-          <SessionBar key={index} session_data={item} />
-        ))
-      )}
+      {isLoading && !data
+        ? [1, 2].map((item) => <Skeleton skfor="SessionBar" key={item} />)
+        : error
+        ? error
+        : data &&
+          data.data.map((item, index) => (
+            <SessionBar key={index} session_data={item} />
+          ))}
     </div>
   );
 };
