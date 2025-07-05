@@ -174,3 +174,12 @@ export const Doctors = [
     image: "default.png",
   },
 ];
+
+export const Instructions = {
+  english: `After you submit your appointment, we will 
+  call you within 30 minutes to confirm the date and time. 
+  Please wait for our call`,
+  sinhala: `ඔබ ඔබගේ හමුවීම ඉදිරිපත් කළ පසු, දිනය සහ වේලාව තහවුරු 
+  කිරීම සඳහා අපි විනාඩි 30ක් ඇතුළත ඔබට කතා කරන්නෙමු. 
+අපගේ ඇමතුම එනතෙක් රැඳී සිටින්න.`,
+};

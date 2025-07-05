@@ -20,7 +20,7 @@ const Skeleton = ({ skfor }) => {
     );
   }
 
-  if (skfor === "DoctorProfile") {
+  if (skfor === "ProfileCard") {
     return (
       <div className="p-4 bg-white border border-[#0460D9]/50 rounded-lg flex items-center justify-center flex-col space-y-4 shadow-md">
         <div className="w-32 h-32 sm:w-36 sm:h-36 rounded-full bg-gray-200 animate-pulse border-2 border-[#0560D9]" />

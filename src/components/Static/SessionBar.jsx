@@ -56,17 +56,30 @@ const SessionBar = ({ session_data }) => {
         </div>
 
         {/* Book Now */}
-        <div className="flex flex-col items-center justify-center col-span-2 mt-2 sm:mt-0 sm:col-span-1">
-          <Button
-            title="Book Now"
-            bg="bg-[#4DB847] text-white px-2 py-1 hover:bg-green-600 rounded-lg"
-            onClick={() => {
-              setIsOpen(!isOpen);
-            }}
-          />
+        <div
+          className="flex
+         flex-col items-center justify-center col-span-2 mt-2 sm:mt-0 sm:col-span-1"
+        >
+          {isOpen ? (
+            <Button
+              title="Booking..."
+              bg="bg-red-600 text-white px-2 py-1 hover:bg-red-700 rounded-lg
+               cursor-not-allowed"
+            />
+          ) : (
+            <Button
+              title="Book Now"
+              bg="bg-[#4DB847] text-white px-2 py-1 hover:bg-green-600 rounded-lg"
+              onClick={() => {
+                setIsOpen(!isOpen);
+              }}
+            />
+          )}
         </div>
       </div>
-      {isOpen && <ChannelForm session_id={id} day={day} />}
+      {isOpen && (
+        <ChannelForm session_id={id} day={day} setStatus={setIsOpen} />
+      )}
     </motion.div>
   );
 };
