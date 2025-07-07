@@ -28,6 +28,7 @@ const MyAppointment = () => {
     if (initialQuery && initialQuery.trim() !== "") {
       reachData();
     }
+    window.scrollTo({ top: 0, behavior: "auto" });
   }, [initialQuery, reachData]);
 
   const handleSearch = () => {
