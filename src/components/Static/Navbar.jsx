@@ -3,12 +3,19 @@ import { FaBars } from "react-icons/fa";
 import { Company } from "../../constants";
 import Button from "./Button";
 import { Link } from "react-router-dom";
+import SubMenu from "./SubMenu";
+import { useState } from "react";
+import { AnimatePresence } from "framer-motion";
+import { IoClose } from "react-icons/io5";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
-  // const [IsSubMenu, setIsSubMenu] = useState(false);
+  const [IsSubMenu, setIsSubMenu] = useState(false);
 
   const click = () => {
-    alert("clicked !");
+    toast.info("Comming Soon !", {
+      position: "top-center",
+    });
   };
   return (
     <nav className="w-full border-b  py-1 shadow-md border-[#0460D9]/50">
@@ -22,23 +29,31 @@ const Navbar = () => {
             <img src={Company.logo} width={100} height={100} alt="" />
           </Link>
           <div className="sm:flex items-center gap-5 hidden">
-            <span
+            <Link
+              to={"/myappointment"}
               className="text-[#0463DF] hover:text-[#044ba8]
             font-medium"
             >
-              My-Appoiments
-            </span>
-            <span
+              My-Appointment
+            </Link>
+            <a
               className="text-[#0463DF] hover:text-[#044ba8]
             font-medium"
+              href="https://www.arogyahospitals.lk/"
+              target="_blank"
             >
               Visit-Main
-            </span>
+            </a>
           </div>
         </div>
         <div className="">
-          <span className="text-[#0460D9] sm:hidden text-2xl font-bold">
-            <FaBars />
+          <span
+            className="text-[#0460D9] sm:hidden text-2xl font-bold"
+            onClick={() => {
+              setIsSubMenu(!IsSubMenu);
+            }}
+          >
+            {IsSubMenu ? <IoClose /> : <FaBars />}
           </span>
           <div className="sm:flex gap-2 items-center hidden">
             <Button
@@ -50,6 +65,7 @@ const Navbar = () => {
           </div>
         </div>
       </div>
+      <AnimatePresence>{IsSubMenu && <SubMenu />}</AnimatePresence>
     </nav>
   );
 };

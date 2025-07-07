@@ -59,6 +59,164 @@ export const Company = {
   ],
 };
 
+export const Specialization = [
+  {
+    id: 1,
+    name: "Cardiologist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296406.png",
+  },
+  {
+    id: 2,
+    name: "Chest Physician",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296411.png",
+  },
+  {
+    id: 3,
+    name: "Dermatologist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296411.png",
+  },
+  {
+    id: 4,
+    name: "Dietician and Nutrician",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296412.png",
+  },
+  {
+    id: 5,
+    name: "Endocrinologist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296413.png",
+  },
+  {
+    id: 6,
+    name: "ENT Surgeon",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296413.png",
+  },
+  {
+    id: 7,
+    name: "Eye Surgeon",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296414.png",
+  },
+  {
+    id: 8,
+    name: "Family Physician",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296414.png",
+  },
+  {
+    id: 9,
+    name: "Gastroenterologist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296415.png",
+  },
+  {
+    id: 10,
+    name: "Genito Urinary Surgeon",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296415.png",
+  },
+  {
+    id: 11,
+    name: "Gynaecologist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296416.png",
+  },
+  {
+    id: 12,
+    name: "Haematologist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296416.png",
+  },
+  {
+    id: 13,
+    name: "Microbiologist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296417.png",
+  },
+  {
+    id: 14,
+    name: "Neonatologist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296417.png",
+  },
+  {
+    id: 15,
+    name: "Nephorologist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296418.png",
+  },
+  {
+    id: 16,
+    name: "Neuro Physician",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296418.png",
+  },
+  {
+    id: 17,
+    name: "Oncologist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296419.png",
+  },
+  {
+    id: 18,
+    name: "OMF Surgeon",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296419.png",
+  },
+  {
+    id: 19,
+    name: "Orthopaedic Surgeon",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296420.png",
+  },
+  {
+    id: 20,
+    name: "Paediatric Neurologist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296420.png",
+  },
+  {
+    id: 21,
+    name: "Paediatrician",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296421.png",
+  },
+  {
+    id: 22,
+    name: "Physician",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296421.png",
+  },
+  {
+    id: 23,
+    name: "Phsiotherapist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296422.png",
+  },
+  {
+    id: 24,
+    name: "Psychiatrist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296422.png",
+  },
+  {
+    id: 25,
+    name: "Psychological counselor",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296423.png",
+  },
+  {
+    id: 26,
+    name: "Rheumatologist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296423.png",
+  },
+  {
+    id: 27,
+    name: "Sexual medicine and Sexual health",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296424.png",
+  },
+  {
+    id: 28,
+    name: "Speech and Language therapist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296424.png",
+  },
+  {
+    id: 29,
+    name: "Sports Medicine",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296425.png",
+  },
+  {
+    id: 30,
+    name: "Surgeon",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296425.png",
+  },
+  {
+    id: 31,
+    name: "Venerelogist",
+    icon: "https://cdn-icons-png.flaticon.com/512/2964/296426.png",
+  },
+];
+
 export const Menu = [
   {
     title: "Channeling",

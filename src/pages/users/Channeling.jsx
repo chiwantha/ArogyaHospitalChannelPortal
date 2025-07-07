@@ -6,16 +6,9 @@ import DoctorCard from "../../components/Static/DoctorCard";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import Skeleton from "../../components/Static/Skeliton";
+import { Specialization } from "../../constants";
 
 const Channeling = () => {
-  const { data: Specialization = [] } = useQuery({
-    queryKey: ["specializationList"],
-    queryFn: async () => {
-      const res = await makeRequest.get(`/doctors/specialization`);
-      return res.data.map((item) => item.specialization);
-    },
-  });
-
   const [Queryfilter, setQueryfilter] = useState({
     doctor_name: "",
     specialization: "",
@@ -28,10 +21,13 @@ const Channeling = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 12;
 
+  // Use the Specialization constant directly instead of fetching from API
+  const specializations = Specialization.map((item) => item.name);
+
   const filteredSpecializations =
     specializationQuery === ""
-      ? Specialization
-      : Specialization.filter((s) =>
+      ? specializations
+      : specializations.filter((s) =>
           s.toLowerCase().includes(specializationQuery.toLowerCase())
         );
 
@@ -45,7 +41,6 @@ const Channeling = () => {
     if (name === "doctor_name") {
       setSearchTerm(value);
     }
-    // Reset to first page when filters change
     setCurrentPage(1);
   };
 
@@ -55,12 +50,12 @@ const Channeling = () => {
       specialization: value,
     }));
     setSpecializationQuery("");
-    setCurrentPage(1); // Reset to first page when specialization changes
+    setCurrentPage(1);
   };
 
   const handleSearch = () => {
     setSearchTerm(Queryfilter.doctor_name);
-    setCurrentPage(1); // Reset to first page on new search
+    setCurrentPage(1);
   };
 
   const handleClearFilters = () => {
@@ -72,7 +67,7 @@ const Channeling = () => {
     });
     setSpecializationQuery("");
     setSearchTerm("");
-    setCurrentPage(1); // Reset to first page when clearing filters
+    setCurrentPage(1);
   };
 
   // fetch doctors list to page
@@ -110,7 +105,7 @@ const Channeling = () => {
 
   return (
     <div className="space-y-4">
-      {/* Filter Component (unchanged) */}
+      {/* Filter Component */}
       <div
         className="bg-[#0560D9] rounded-lg py-4 px-2 shadow-md grid grid-cols-1 
       sm:grid-cols-2 md:grid-cols-3 gap-4"
@@ -191,12 +186,11 @@ const Channeling = () => {
         {error && <div>Error loading doctors: {error.message}</div>}
 
         {/* Empty state */}
-        {!isLoading ||
-          (!isFetching && filteredDoctors.length === 0 && (
-            <div className="col-span-full text-center py-8">
-              No doctors found matching your criteria
-            </div>
-          ))}
+        {!isLoading && !isFetching && filteredDoctors.length === 0 && (
+          <div className="col-span-full text-center py-8">
+            No doctors found matching your criteria
+          </div>
+        )}
 
         {/* Doctors grid */}
         {(isLoading || isFetching) && !data ? (
