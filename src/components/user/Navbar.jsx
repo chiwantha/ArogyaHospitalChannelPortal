@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import { FaBars } from "react-icons/fa";
 import { Company } from "../../constants";
-import Button from "./Button";
+import Button from "../common/Button";
 import { Link } from "react-router-dom";
 import SubMenu from "./SubMenu";
 import { useState } from "react";

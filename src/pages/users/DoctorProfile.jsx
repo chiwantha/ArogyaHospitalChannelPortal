@@ -2,10 +2,10 @@ import { useParams } from "react-router-dom";
 import { useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
-import ProfileCard from "../../components/Static/ProfileCard";
-import Skeleton from "../../components/Static/Skeliton";
-import SessionBar from "../../components/Static/SessionBar";
-import InstructuonsCard from "../../components/Static/InstructionsCard";
+import ProfileCard from "../../components/user/ProfileCard";
+import Skeleton from "../../components/common/Skeliton";
+import SessionBar from "../../components/user/SessionBar";
+import InstructuonsCard from "../../components/user/InstructionsCard";
 
 const DoctorProfile = () => {
   const { id: doctor_id } = useParams();

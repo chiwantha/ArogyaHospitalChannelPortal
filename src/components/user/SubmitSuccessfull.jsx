@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "./Button";
+import Button from "../common/Button";
 import { Link } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";

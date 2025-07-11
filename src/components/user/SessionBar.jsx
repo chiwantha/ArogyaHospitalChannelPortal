@@ -1,11 +1,11 @@
 import { useState } from "react";
-import Button from "./Button";
+import Button from "../common/Button";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import ChannelForm from "./ChannelForm";
 
 const SessionBar = ({ session_data }) => {
-  const { id, day, start_time, end_time, type, fee } = session_data;
+  const { id, day, start_time, type, fee } = session_data;
   const [isOpen, setIsOpen] = useState(false);
   return (
     <motion.div
@@ -38,9 +38,7 @@ const SessionBar = ({ session_data }) => {
         <div className="flex flex-col items-center justify-center border-gray-300 border-r sm:border-0 md:border-r">
           <span className="text-sm font-medium text-gray-700">Time</span>
           <span className="text-lg font-extrabold text-[#0560D9]">
-            {start_time && end_time
-              ? start_time.slice(0, 5) + " - " + end_time.slice(0, 5)
-              : "00:00 - 00:00"}
+            {start_time ? start_time.slice(0, 8) : "00:00 - 00:00"}
           </span>
           <span className="text-sm font-semibold text-gray-600">
             {type ? type : "Session Type"}

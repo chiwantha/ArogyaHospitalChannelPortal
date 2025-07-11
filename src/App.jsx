@@ -5,13 +5,14 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import Navbar from "./components/Static/Navbar";
-import Footer from "./components/Static/Footer";
+import Navbar from "./components/user/Navbar";
+import Footer from "./components/user/Footer";
 import Home from "./pages/users/Home";
 import Channeling from "./pages/users/Channeling";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import DoctorProfile from "./pages/users/DoctorProfile";
 import MyAppointment from "./pages/users/MyAppointment";
+import AppointmentCheckList from "./pages/admin/AppointmentCheckList";
 
 const App = () => {
   const queryClient = new QueryClient({});
@@ -65,6 +66,10 @@ const App = () => {
         {
           path: "myappointment",
           element: <MyAppointment />,
+        },
+        {
+          path: "adminap",
+          element: <AppointmentCheckList />,
         },
       ],
     },

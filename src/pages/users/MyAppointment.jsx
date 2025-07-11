@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { makeRequest } from "../../axios";
-import Button from "../../components/Static/Button";
+import Button from "../../components/common/Button";
 import { useMutation } from "@tanstack/react-query";
-import AppointmentCard from "../../components/Static/AppointmentCard";
+import AppointmentCard from "../../components/common/AppointmentCard";
 
 const MyAppointment = () => {
   const initialQuery =
@@ -72,7 +72,7 @@ const MyAppointment = () => {
         {error && <div className="text-red-500">Error: {error.message}</div>}
         {data &&
           data.map((item, index) => (
-            <AppointmentCard key={index} data={item} />
+            <AppointmentCard key={index} data={item} admin={false} />
           ))}
       </div>
     </div>
