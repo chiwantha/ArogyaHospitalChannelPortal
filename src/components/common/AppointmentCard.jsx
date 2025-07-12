@@ -130,12 +130,16 @@ const AppointmentCard = ({ data, admin }) => {
       <div className="border-t border-gray-200" />
 
       {/* Patient Details */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-800">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-gray-800 ">
         <Detail label="Patient" value={patient || "Unknown"} />
         <Detail label="Contact" value={contact || "0"} />
         <Detail label="Alternate Contact" value={alternate_contact || "0"} />
         <Detail label="Email" value={email || "Not Set"} />
-        <Detail label="Note" value={note || "Not Set"} />
+        <Detail
+          label="Note"
+          value={note || "Not Set"}
+          classn={"sm:col-span-2"}
+        />
       </div>
 
       <div className="flex flex-col gap-4">
@@ -199,8 +203,8 @@ const AppointmentCard = ({ data, admin }) => {
   );
 };
 
-const Detail = ({ label, value }) => (
-  <div>
+const Detail = ({ label, value, classn }) => (
+  <div className={classn}>
     <span className="text-sm font-semibold text-gray-600">{label}: </span>
     <span className="text-sm text-gray-500">{value}</span>
   </div>
