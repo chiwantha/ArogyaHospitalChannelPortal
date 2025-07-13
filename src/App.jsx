@@ -19,7 +19,7 @@ import MyAppointment from "./pages/users/MyAppointment";
 import AppointmentCheckList from "./pages/admin/AppointmentCheckList";
 
 const App = () => {
-  const queryClient = new QueryClient();
+  const queryClient = new QueryClient({});
   const currentUser = true;
 
   const ProtectRoute = ({ children }) => {
