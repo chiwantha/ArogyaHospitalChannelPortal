@@ -1,22 +1,21 @@
 import {
   createBrowserRouter,
   Navigate,
-  Outlet,
   RouterProvider,
 } from "react-router-dom";
-import { ToastContainer } from "react-toastify";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-// User Components
-import Navbar from "./components/user/Navbar";
-import Footer from "./components/user/Footer";
+// User Pages
 import Home from "./pages/users/Home";
 import Channeling from "./pages/users/Channeling";
 import DoctorProfile from "./pages/users/DoctorProfile";
 import MyAppointment from "./pages/users/MyAppointment";
 
-// Admin Components
+// Admin Pages
 import AppointmentCheckList from "./pages/admin/AppointmentCheckList";
+
+import AdminLayout from "./layouts/AdminLayout";
+import UserLayout from "./layouts/UserLayout";
 
 const App = () => {
   const queryClient = new QueryClient({});
@@ -29,30 +28,17 @@ const App = () => {
     return children;
   };
 
-  const Layout = () => {
-    return (
-      <div className="space-y-4">
-        <Navbar />
-        <div className="mx-auto px-2 max-w-7xl">
-          <Outlet />
-        </div>
-        <Footer />
-        <ToastContainer />
-      </div>
-    );
-  };
-
   const router = createBrowserRouter([
     {
       path: "/",
       element: (
         <ProtectRoute>
-          <Layout />
+          <UserLayout />
         </ProtectRoute>
       ),
       children: [
         {
-          path: "/",
+          index: true,
           element: <Home />,
         },
         {
@@ -71,8 +57,18 @@ const App = () => {
           path: "myappointment",
           element: <MyAppointment />,
         },
+      ],
+    },
+    {
+      path: "/admin",
+      element: (
+        <ProtectRoute>
+          <AdminLayout />
+        </ProtectRoute>
+      ),
+      children: [
         {
-          path: "adminap",
+          index: true,
           element: <AppointmentCheckList />,
         },
       ],

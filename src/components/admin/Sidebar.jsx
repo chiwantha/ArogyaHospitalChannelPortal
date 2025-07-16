@@ -4,6 +4,7 @@ import { RiDashboardFill } from "react-icons/ri";
 import { HiDocumentText } from "react-icons/hi";
 import { FaTrashAlt } from "react-icons/fa";
 import { GoHomeFill } from "react-icons/go";
+import { useSidebar } from "../../Context/SidebarContext";
 
 const sideBar = [
   {
@@ -34,10 +35,13 @@ const sideBar = [
 ];
 
 const Sidebar = () => {
+  const { isSidebarOpen } = useSidebar();
   return (
     <div
-      className="bg-[#0463DF]  rounded-lg
-  flex flex-col"
+      className={`bg-[#0463DF]  rounded-lg
+  flex flex-col ${
+    isSidebarOpen ? "translate-x-0" : "-translate-x-80 sm:translate-x-0"
+  }`}
     >
       {sideBar.map((item, index) => (
         <SidebarItem

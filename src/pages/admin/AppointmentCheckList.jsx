@@ -14,7 +14,7 @@ const AppointmentCheckList = () => {
 
   return (
     <div>
-      <div className="grid md:grid-cols-2 grid-cols-1 gap-4">
+      <div className="grid lg:grid-cols-2 grid-cols-1 gap-4">
         {isLoading && <div>Loading ...</div>}
         {error && <div className="text-red-500">Error: {error.message}</div>}
         {data &&
