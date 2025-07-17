@@ -1,4 +1,5 @@
 import React from "react";
+import DashSkelton from "../../assets/res/dash/skelton.png";
 
 const Skeleton = ({ skfor }) => {
   if (skfor === "DoctorCard") {
@@ -124,6 +125,27 @@ const Skeleton = ({ skfor }) => {
         >
           <span className="text-sm font-medium w-4/8 rounded-lg bg-gray-200 p-4" />
         </div>
+      </div>
+    );
+  }
+
+  if (skfor === "dashCard") {
+    return (
+      <div
+        className="px-4 py-6 rounded-lg shadow-md border border-gray-300 bg-slate-50
+    flex flex-col items-start relative overflow-hidden space-y-2 animate-pulse"
+      >
+        <span className="text-sm font-medium w-1/2 rounded-lg bg-gray-200 p-2" />
+        <span className="text-sm font-medium w-4/6 rounded-lg bg-gray-200 p-4" />
+        <span className="text-sm font-medium w-1/3 rounded-lg bg-gray-200 p-1" />
+
+        <img
+          src={DashSkelton}
+          width={100}
+          height={100}
+          alt="default.png"
+          className="absolute right-[-70px] h-full top-0 aspect-square mask-l-from-0.5 opacity-70"
+        />
       </div>
     );
   }

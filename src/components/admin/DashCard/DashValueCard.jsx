@@ -1,4 +1,3 @@
-import React from "react";
 import dashDefault from "../../../assets/res/dashboard.png";
 import { Link } from "react-router-dom";
 
@@ -12,7 +11,7 @@ const DashValueCard = ({ title, value, link, icon }) => {
         {title ? title : "Card"}
       </span>
       <span className="text-5xl font-semibold mt-[-5px] text-gray-600">
-        {value ? value : "0000"}
+        {value !== null ? value : "0000"}
       </span>
       {link ? (
         <Link
@@ -35,7 +34,7 @@ const DashValueCard = ({ title, value, link, icon }) => {
         width={100}
         height={100}
         alt="default.png"
-        className="absolute right-[-40px] h-full top-0 aspect-square mask-l-from-0.5 opacity-70"
+        className="absolute right-[-40px] h-full top-0 aspect-square mask-l-from-0.5 opacity-40"
       />
     </div>
   );
