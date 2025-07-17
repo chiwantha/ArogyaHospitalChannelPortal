@@ -11,14 +11,14 @@ const AdminLayout = () => {
       <div className="space-y-4">
         <AdminNav />
         <div className="mx-auto px-2 max-w-7xl">
-          <div className="flex min-h-screen gap-4">
+          <div className="flex  gap-4">
             <div
               className="w-44  sm:block fixed sm:sticky 
-          top-[70px] h-full"
+          top-[70px] h-full z-40 "
             >
               <Sidebar />
             </div>
-            <div className="flex-1 h-dvh">
+            <div className="flex-1  z-30">
               <Outlet />
             </div>
           </div>

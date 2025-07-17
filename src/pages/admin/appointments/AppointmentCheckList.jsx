@@ -1,7 +1,7 @@
 import React from "react";
 import { useQuery } from "@tanstack/react-query";
-import { makeRequest } from "../../axios";
-import AppointmentCard from "../../components/common/AppointmentCard";
+import { makeRequest } from "../../../axios";
+import AppointmentCard from "../../../components/common/AppointmentCard";
 
 const AppointmentCheckList = () => {
   const { data, isLoading, error } = useQuery({

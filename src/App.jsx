@@ -12,7 +12,9 @@ import DoctorProfile from "./pages/users/DoctorProfile";
 import MyAppointment from "./pages/users/MyAppointment";
 
 // Admin Pages
-import AppointmentCheckList from "./pages/admin/AppointmentCheckList";
+import RemovedAppoiment from "./pages/admin/appointments/RemovedAppoiment";
+import AppointmentCheckList from "./pages/admin/Appointments/AppointmentCheckList";
+import Dashboard from "./pages/admin/Dashboard";
 
 import AdminLayout from "./layouts/AdminLayout";
 import UserLayout from "./layouts/UserLayout";
@@ -69,7 +71,15 @@ const App = () => {
       children: [
         {
           index: true,
+          element: <Dashboard />,
+        },
+        {
+          path: "appointments",
           element: <AppointmentCheckList />,
+        },
+        {
+          path: "removed",
+          element: <RemovedAppoiment />,
         },
       ],
     },
