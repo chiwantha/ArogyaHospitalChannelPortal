@@ -41,28 +41,28 @@ const DashCardGrid = () => {
                 link={true}
                 icon={Pending}
                 title={"Pending"}
-                value={data.pending}
+                value={data ? data.pending : null}
               />
               {/* Appointment Addroved */}
               <DashValueCard
                 link={true}
                 icon={Approve}
                 title={"Approved"}
-                value={data.approved}
+                value={data ? data.approved : null}
               />
               {/* Appointment Rejected */}
               <DashValueCard
                 link={true}
                 icon={Reject}
                 title={"Removed"}
-                value={data.reject}
+                value={data ? data.reject : null}
               />
               {/* Appointment Total */}
               <DashValueCard
                 link={true}
                 icon={Total}
                 title={"Total"}
-                value={data.total}
+                value={data ? data.total : null}
               />
             </>
           )}
@@ -71,13 +71,14 @@ const DashCardGrid = () => {
       {/* Doctor */}
       <div className="flex flex-col space-y-2">
         <span className="text-gray-500 uppercase text-sm">Doctor</span>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
           {isLoading ? (
             <>
               <Skeleton skfor={"dashCard"} />
               <Skeleton skfor={"dashCard"} />
-              <Skeleton skfor={"dashCard"} />
-              <Skeleton skfor={"dashCard"} />
+              <div className="col-span-2 md:col-span-1">
+                <Skeleton skfor={"dashCard"} />
+              </div>
             </>
           ) : (
             <>
@@ -86,28 +87,58 @@ const DashCardGrid = () => {
                 link={true}
                 icon={Doctor}
                 title={"All"}
-                value={data.doctors}
+                value={data ? data.doctors : null}
               />
               {/* Doctors No Sessions */}
               <DashValueCard
                 link={true}
                 icon={Doctors_No_Session}
                 title={"outSession"}
-                value={data.doctors_no_session}
+                value={data ? data.doctors_no_session : null}
               />
               {/* Active Sessions */}
-              <DashValueCard
-                link={true}
-                icon={Session}
-                title={"Sessions"}
-                value={data.active_stssion}
-              />
+              <div className="col-span-2 md:col-span-1">
+                <DashValueCard
+                  link={true}
+                  icon={Session}
+                  title={"Sessions"}
+                  value={data ? data.active_stssion : null}
+                />
+              </div>
+            </>
+          )}
+        </div>
+      </div>
+      {/* System */}
+      <div className="grid grid-cols-2 gap-4">
+        <div className="flex flex-col space-y-2">
+          <span className="text-gray-500 uppercase text-sm">Finance</span>
+          {isLoading ? (
+            <Skeleton skfor={"dashCard"} />
+          ) : (
+            <>
               {/* Sale */}
               <DashValueCard
                 link={true}
                 icon={Sale}
                 title={"Sale"}
-                value={data.sale}
+                value={data ? data.sale : null}
+              />
+            </>
+          )}
+        </div>
+        <div className="flex flex-col space-y-2">
+          <span className="text-gray-500 uppercase text-sm">Sms</span>
+          {isLoading ? (
+            <Skeleton skfor={"dashCard"} />
+          ) : (
+            <>
+              {/* Sale */}
+              <DashValueCard
+                link={true}
+                icon={Sale}
+                title={"Balance"}
+                value={data ? data.sms_balance : null}
               />
             </>
           )}

@@ -4,7 +4,7 @@ import DatePicker from "react-datepicker";
 // eslint-disable-next-line no-unused-vars
 import { AnimatePresence, motion } from "framer-motion";
 import { toast } from "react-toastify";
-import { useMutation } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import SubmitSuccessfull from "./SubmitSuccessfull";
 import "react-datepicker/dist/react-datepicker.css";
@@ -22,6 +22,7 @@ const dayMap = {
 const ChannelForm = ({ session_id, day, setStatus }) => {
   const allowedDay = dayMap[day];
   const [isSuccess, setisSuccess] = useState(false);
+  const queryClient = useQueryClient();
 
   const [formData, setFormData] = useState({
     session_id,
@@ -84,7 +85,7 @@ const ChannelForm = ({ session_id, day, setStatus }) => {
     return true;
   };
 
-  const mutation = useMutation({
+  const { isPending, mutate: submitForm } = useMutation({
     mutationKey: ["newAppointment"],
     mutationFn: async (data) => {
       await makeRequest.post("/appointment/new", data);
@@ -93,6 +94,7 @@ const ChannelForm = ({ session_id, day, setStatus }) => {
       localStorage.setItem("appoimentNumber", JSON.stringify(formData.contact));
       setisSuccess(true);
       clear();
+      queryClient.invalidateQueries(["appointmentListAdmin", "dashCounts"]);
     },
     onError: () => {
       toast.error("Submission Failed!");
@@ -101,7 +103,7 @@ const ChannelForm = ({ session_id, day, setStatus }) => {
 
   const handleSubmit = () => {
     if (!validate()) return;
-    mutation.mutate(formData);
+    submitForm(formData);
   };
 
   const filterDate = (date) => {
@@ -243,11 +245,20 @@ const ChannelForm = ({ session_id, day, setStatus }) => {
 
             {/* Action Buttons */}
             <div className="flex gap-4 mt-4">
-              <Button
-                title={"Make Appointment"}
-                bg={"py-2 bg-[#0460D9] text-white hover:bg-[#1b3961]"}
-                onClick={handleSubmit}
-              />
+              {isPending ? (
+                <Button
+                  title={"Wait ..... !"}
+                  bg={
+                    "py-2 bg-[#4DB847] text-white hover:bg-[#00A63E] cursor-not-allowed animate-pulse"
+                  }
+                />
+              ) : (
+                <Button
+                  title={"Make Appointment"}
+                  bg={"py-2 bg-[#0460D9] text-white hover:bg-[#1b3961]"}
+                  onClick={handleSubmit}
+                />
+              )}
               <Button
                 title={"Clear"}
                 bg={"py-2 bg-red-700 text-white hover:bg-red-600"}
