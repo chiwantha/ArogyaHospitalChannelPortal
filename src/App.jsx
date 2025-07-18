@@ -13,7 +13,7 @@ import MyAppointment from "./pages/users/MyAppointment";
 
 // Admin Pages
 import RemovedAppoiment from "./pages/admin/appointments/RemovedAppoiment";
-import AppointmentCheckList from "./pages/admin/Appointments/AppointmentCheckList";
+import AppointmentCheckList from "./pages/admin/appointments/AppointmentCheckList";
 import Dashboard from "./pages/admin/Dashboard";
 
 import AdminLayout from "./layouts/AdminLayout";
