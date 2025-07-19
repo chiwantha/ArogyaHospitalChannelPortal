@@ -18,14 +18,25 @@ import Dashboard from "./pages/admin/Dashboard";
 
 import AdminLayout from "./layouts/AdminLayout";
 import UserLayout from "./layouts/UserLayout";
+import AdminLogin from "./pages/admin/auth/AdminLogin";
 
 const App = () => {
   const queryClient = new QueryClient({});
-  const currentUser = true;
+  const currentUser = {
+    user: "username",
+    role: "1",
+  };
 
-  const ProtectRoute = ({ children }) => {
+  const ProtectUserRoute = ({ children }) => {
     if (!currentUser) {
       return <Navigate to={"/home"} />;
+    }
+    return children;
+  };
+
+  const ProtectAdminRoute = ({ children }) => {
+    if (!currentUser || currentUser.role !== "1") {
+      return <Navigate to={"/arg-login"} />;
     }
     return children;
   };
@@ -34,9 +45,9 @@ const App = () => {
     {
       path: "/",
       element: (
-        <ProtectRoute>
+        <ProtectUserRoute>
           <UserLayout />
-        </ProtectRoute>
+        </ProtectUserRoute>
       ),
       children: [
         {
@@ -64,9 +75,9 @@ const App = () => {
     {
       path: "/admin",
       element: (
-        <ProtectRoute>
+        <ProtectAdminRoute>
           <AdminLayout />
-        </ProtectRoute>
+        </ProtectAdminRoute>
       ),
       children: [
         {
@@ -82,6 +93,10 @@ const App = () => {
           element: <RemovedAppoiment />,
         },
       ],
+    },
+    {
+      path: "/arg-login",
+      element: <AdminLogin />,
     },
   ]);
 

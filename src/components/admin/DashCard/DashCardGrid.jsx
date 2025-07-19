@@ -10,6 +10,7 @@ import Doctor from "../../../assets/res/dash/doctor.png";
 import Doctors_No_Session from "../../../assets/res/dash/doctors_no_session.png";
 import Session from "../../../assets/res/dash/session.png";
 import Sale from "../../../assets/res/dash/sale.png";
+import Sms from "../../../assets/res/dash/sms.png";
 import Skeleton from "../../common/Skeliton";
 
 const DashCardGrid = () => {
@@ -136,7 +137,7 @@ const DashCardGrid = () => {
               {/* Sale */}
               <DashValueCard
                 link={true}
-                icon={Sale}
+                icon={Sms}
                 title={"Balance"}
                 value={data ? data.sms_balance : null}
               />
