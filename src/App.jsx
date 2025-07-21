@@ -4,6 +4,8 @@ import {
   RouterProvider,
 } from "react-router-dom";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { AuthContext } from "./Context/authContext";
+import { useContext } from "react";
 
 // User Pages
 import Home from "./pages/users/Home";
@@ -15,27 +17,24 @@ import MyAppointment from "./pages/users/MyAppointment";
 import RemovedAppoiment from "./pages/admin/appointments/RemovedAppoiment";
 import AppointmentCheckList from "./pages/admin/appointments/AppointmentCheckList";
 import Dashboard from "./pages/admin/Dashboard";
+import AdminLogin from "./pages/admin/auth/AdminLogin";
 
 import AdminLayout from "./layouts/AdminLayout";
 import UserLayout from "./layouts/UserLayout";
-import AdminLogin from "./pages/admin/auth/AdminLogin";
 
 const App = () => {
+  const { currentUser } = useContext(AuthContext);
   const queryClient = new QueryClient({});
-  const currentUser = {
-    user: "username",
-    role: "1",
-  };
 
   const ProtectUserRoute = ({ children }) => {
-    if (!currentUser) {
+    if (currentUser) {
       return <Navigate to={"/home"} />;
     }
     return children;
   };
 
   const ProtectAdminRoute = ({ children }) => {
-    if (!currentUser || currentUser.role !== "1") {
+    if (!currentUser || currentUser.role !== 1) {
       return <Navigate to={"/arg-login"} />;
     }
     return children;
@@ -45,9 +44,9 @@ const App = () => {
     {
       path: "/",
       element: (
-        <ProtectUserRoute>
-          <UserLayout />
-        </ProtectUserRoute>
+        // <ProtectUserRoute>
+        <UserLayout />
+        // </ProtectUserRoute>
       ),
       children: [
         {

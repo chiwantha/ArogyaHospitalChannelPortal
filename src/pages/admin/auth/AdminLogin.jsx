@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Company } from "../../../constants";
 import Button from "../../../components/common/Button";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../Context/authContext";
+import { toast, ToastContainer } from "react-toastify";
+
 const AdminLogin = () => {
-  const Navigate = useNavigate();
+  const navigate = useNavigate();
+  const { userLogin } = useContext(AuthContext);
+  const [isLoading, setisLoading] = useState(false);
 
   const [formData, setformData] = useState({
     username: "",
@@ -12,7 +17,37 @@ const AdminLogin = () => {
     role: 1,
   });
 
-  console.log(formData);
+  const handleClick = async () => {
+    setisLoading(true);
+    const { username, password, role } = formData;
+
+    if (!username || username === "") {
+      toast.warning("Username Missing !");
+      setisLoading(false);
+      return;
+    }
+    if (!password || password === "") {
+      toast.warning("Password Missing !");
+      setisLoading(false);
+      return;
+    }
+    if (!role || role === "") {
+      toast.warning("Admin Md Missing !");
+      setisLoading(false);
+      return;
+    }
+
+    try {
+      await userLogin(formData);
+      navigate("/admin");
+    } catch (err) {
+      toast.error(err);
+      setisLoading(false);
+    }
+  };
+
+  // console.log(currentUser);
+  //console.log(formData);
 
   return (
     <div className="h-screen w-full flex items-center justify-center px-4">
@@ -55,6 +90,7 @@ const AdminLogin = () => {
                 maxLength={100}
                 type="password"
                 className="bg-slate-100 rounded-md outline-none w-full px-2 py-2 border border-gray-300"
+                placeholder="password"
                 name="password"
                 onChange={(e) => {
                   setformData({ ...formData, [e.target.name]: e.target.value });
@@ -67,17 +103,22 @@ const AdminLogin = () => {
                 pd={"px-4 py-2"}
                 bg={"bg-[#4CB847] text-white hover:bg-green-600"}
               />
-              <Button
-                title={"Login"}
-                pd={"px-4 py-2"}
-                onClick={() => {
-                  Navigate("/admin");
-                }}
-              />
+              {isLoading ? (
+                <Button title={"Logging !"} pd={"px-4 py-2 animate-pulse"} />
+              ) : (
+                <Button
+                  title={"Login"}
+                  pd={"px-4 py-2"}
+                  onClick={() => {
+                    handleClick();
+                  }}
+                />
+              )}
             </div>
           </div>
         </div>
       </div>
+      <ToastContainer />
     </div>
   );
 };

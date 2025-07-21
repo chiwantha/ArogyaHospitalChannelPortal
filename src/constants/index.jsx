@@ -228,13 +228,13 @@ export const Menu = [
     link: "/channeling",
   },
   {
-    title: "E-Channel History",
+    title: "Channel History",
     icon: channel_history,
     subtitle: "Browse your history",
     help: "See your previous appointments and doctor visit records.",
     badge: "New !",
     badgeColor: "hot",
-    link: "",
+    link: "/myappointment",
   },
   {
     title: "Online Pharmacy",
