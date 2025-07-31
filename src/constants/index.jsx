@@ -1,4 +1,4 @@
-import arogya_logo from "../assets/company/logo.png";
+import default_logo from "/hospital/logo/default.png";
 import arogya_banner from "../assets/company/banner.png";
 import channeling from "../assets/icons/channeling.png";
 import channel_history from "../assets/icons/channel_history.png";
@@ -6,7 +6,6 @@ import pharmacy from "../assets/icons/pharmacy.png";
 import lab from "../assets/icons/lab.png";
 import prescription from "../assets/icons/prescription.png";
 import help from "../assets/icons/help.png";
-
 import {
   FaUserMd,
   FaTooth,
@@ -15,17 +14,16 @@ import {
   FaProcedures,
 } from "react-icons/fa";
 import { MdOutlineLocalHospital } from "react-icons/md";
-
 import { FaPills } from "react-icons/fa";
 
 export const Company = {
-  name: "Arogya Hospitals (Pvt) Ltd",
-  description: `Arogya Hospitals is committed to providing quality healthcare with
+  name: "SL Hospitals (Pvt) Ltd",
+  description: `This Hospitals is committed to providing quality healthcare with
             compassion and excellence. Our online channeling portal allows you
             to easily book appointments with trusted doctors from anywhere`,
   proud: `Proud to be Sri Lanka’s most trusted hospital for 
             compassionate and quality healthcare`,
-  logo: arogya_logo,
+  logo: default_logo,
   banner: arogya_banner,
   services: [
     {
@@ -271,65 +269,6 @@ export const Menu = [
     badge: "Try Now !",
     badgeColor: "success",
     link: "",
-  },
-];
-
-export const Doctors = [
-  {
-    id: 1,
-    name: "Dr. Suneth Karunarathna",
-    specialization: "Cardiologist",
-    gender: "male",
-    image: "default.png",
-  },
-  {
-    id: 2,
-    name: "Dr. Roshan Gunarathna",
-    specialization: "Cardiologist",
-    gender: "male",
-    image: "default.png",
-  },
-  {
-    id: 3,
-    name: "Dr. Damith Rodrigo",
-    specialization: "Chest Physician",
-    gender: "male",
-    image: "default.png",
-  },
-  {
-    id: 4,
-    name: "Dr. Nandika Harischandra",
-    specialization: "Chest Physician",
-    gender: "female",
-    image: "default.png",
-  },
-  {
-    id: 5,
-    name: "Dr. Saman Kularathna",
-    specialization: "Chest Physician",
-    gender: "male",
-    image: "default.png",
-  },
-  {
-    id: 6,
-    name: "Dr. D.M. Amarathunga",
-    specialization: "Dermatologist",
-    gender: "male",
-    image: "default.png",
-  },
-  {
-    id: 7,
-    name: "Dr. Fathima Hasmiya",
-    specialization: "Dermatologist",
-    gender: "female",
-    image: "default.png",
-  },
-  {
-    id: 8,
-    name: "Dr. Sanjeewa Hulangamuwa",
-    specialization: "Dermatologist",
-    gender: "female",
-    image: "default.png",
   },
 ];
 

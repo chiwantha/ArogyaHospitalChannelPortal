@@ -8,8 +8,11 @@ import { useState } from "react";
 import { AnimatePresence } from "framer-motion";
 import { IoClose } from "react-icons/io5";
 import { toast } from "react-toastify";
+import { useContext } from "react";
+import { ConfigContext } from "../../Context/configContext";
 
 const Navbar = () => {
+  const { appConfig } = useContext(ConfigContext);
   const [IsSubMenu, setIsSubMenu] = useState(false);
 
   const click = () => {
@@ -26,7 +29,14 @@ const Navbar = () => {
         <div className="flex items-center gap-5">
           {/* <span className="text-[#0460D9] text-2xl font-bold">AROGYA</span> */}
           <Link to={"/"}>
-            <img src={Company.logo} width={100} height={100} alt="" />
+            <img
+              src={`/hospital/logo/${
+                appConfig ? appConfig.logo : `default.png`
+              }`}
+              width={100}
+              height={100}
+              alt=""
+            />
           </Link>
           <div className="sm:flex items-center gap-5 hidden">
             <Link

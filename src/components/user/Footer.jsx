@@ -1,31 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Company } from "../../constants";
+import { ConfigContext } from "../../Context/configContext";
 
 const Footer = () => {
+  const { appConfig } = useContext(ConfigContext);
+
   const Likns = [
     {
       title: "Main Web",
-      link: "https://www.arogyahospitals.lk",
+      link: appConfig ? appConfig.web_link : `/`,
     },
     {
       title: "Arogya Channeling",
-      link: "https://channling.arogyahospitals.lk",
+      link: appConfig ? appConfig.portal_link : `/`,
     },
     {
       title: "About Arogya",
-      link: "https://www.arogyahospitals.lk/about/",
+      link: appConfig ? appConfig.about_page_link : `/`,
     },
     {
       title: "Services",
-      link: "https://www.arogyahospitals.lk/services/",
+      link: appConfig ? appConfig.service_page_link : `/`,
     },
   ];
 
   const Contact = [
-    "Lan : 033 222 4592",
-    "WhatsApp : 070 745 5505",
-    "Mail : info@argyahospitals.lk",
-    "Address : No.250 Colombo Rd, Gampaha",
+    `Lan : ${appConfig ? appConfig.lan : "Unknown"}`,
+    `WhatsApp : ${appConfig ? appConfig.whatsapp : "Unknown"}`,
+    `Mail : ${appConfig ? appConfig.email : "Unknown"}`,
+    `Address : ${appConfig ? appConfig.address : "Unknown"}`,
   ];
 
   return (
@@ -38,7 +41,7 @@ const Footer = () => {
         >
           {/* Description */}
           <p className="text-neutral-200 max-w-4xl text-center">
-            {Company.description}
+            {appConfig ? appConfig.description : Company.description}
           </p>
           {/* separator */}
           <hr className="border-gray-300/50 w-full" />
@@ -46,17 +49,30 @@ const Footer = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 w-full">
             {/* hospital breef */}
             <div
-              className="flex flex-col items-center justify-center 
-            space-y-3 bg-[#FFC935] p-3 rounded-lg text-center"
+              className={`flex flex-col items-center justify-center 
+            space-y-3 p-3 rounded-lg text-center`}
+              style={{ backgroundColor: appConfig?.action_color || "#F1F5F9" }}
             >
-              <img src={Company.logo} width={100} height={100} alt="" />
+              <img
+                src={`/hospital/logo/${
+                  appConfig ? appConfig.logo : "default.png"
+                }`}
+                width={100}
+                height={100}
+                alt=""
+              />
               {/* <hr className="border-gray-500/50  w-1/2" /> */}
-              <p className="text-gray-800">{Company.proud}</p>
+              <p className="text-gray-600">
+                {appConfig ? appConfig.footer_desc : Company.proud}
+              </p>
             </div>
             {/* important links */}
             <div className="flex flex-col items-end text-right">
-              <h2 className="text-2xl text-[#FFC935] font-black uppercase mb-1">
-                Arogya Links
+              <h2
+                className="text-2xl font-black uppercase mb-1"
+                style={{ color: appConfig?.action_color || "#FFC935" }}
+              >
+                {appConfig ? appConfig.name.split(" ")[0] : "Hospital"} Links
               </h2>
               {Likns.map((item, index) => (
                 <span className="text-neutral-200 mb-1" key={index}>
@@ -69,8 +85,11 @@ const Footer = () => {
               className="flex flex-col items-start text-left
             border-neutral-300/50 md:border-l md:pl-4"
             >
-              <h2 className="text-2xl text-[#FFC935] font-black uppercase mb-1">
-                Contact Arogya
+              <h2
+                className="text-2xl font-black uppercase mb-1"
+                style={{ color: appConfig?.action_color || "#FFC935" }}
+              >
+                Contact {appConfig ? appConfig.name.split(" ")[0] : "Hospital"}
               </h2>
               {Contact.map((item, index) => (
                 <span className="text-neutral-200 mb-1" key={index}>
@@ -85,7 +104,8 @@ const Footer = () => {
       <div className="bg-[#0349A4] py-4">
         <div className="mx-auto max-w-7xl px-2 flex flex-col md:flex-row justify-between items-center text-sm text-neutral-300 text-center gap-2">
           <span>
-            © {new Date().getFullYear()} Arogya Hospitals (Pvt) Ltd. All rights
+            © {new Date().getFullYear()}{" "}
+            {appConfig ? appConfig.name : "K-Chord (Pvt) Ltd"}. All rights
             reserved.
           </span>
           <span>

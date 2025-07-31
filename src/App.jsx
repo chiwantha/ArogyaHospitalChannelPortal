@@ -3,7 +3,6 @@ import {
   Navigate,
   RouterProvider,
 } from "react-router-dom";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { AuthContext } from "./Context/authContext";
 import { useContext } from "react";
 
@@ -21,10 +20,12 @@ import AdminLogin from "./pages/admin/auth/AdminLogin";
 
 import AdminLayout from "./layouts/AdminLayout";
 import UserLayout from "./layouts/UserLayout";
+import { ConfigContext } from "./Context/configContext";
 
 const App = () => {
   const { currentUser } = useContext(AuthContext);
-  const queryClient = new QueryClient({});
+  const { appConfig } = useContext(ConfigContext);
+  console.log(appConfig);
 
   const ProtectUserRoute = ({ children }) => {
     if (currentUser) {
@@ -100,11 +101,9 @@ const App = () => {
   ]);
 
   return (
-    <QueryClientProvider client={queryClient}>
-      <div className="select-none">
-        <RouterProvider router={router} />
-      </div>
-    </QueryClientProvider>
+    <div className="select-none">
+      <RouterProvider router={router} />
+    </div>
   );
 };
 
