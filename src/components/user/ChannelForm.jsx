@@ -36,6 +36,8 @@ const ChannelForm = ({ session_id, day, setStatus }) => {
     date: "",
     email: "",
     note: "",
+    whatsapp_send: appConfig ? appConfig.whatsapp_send : `788806670`,
+    hospital_id: appConfig ? appConfig.id : `0`,
   });
 
   const clear = () => {

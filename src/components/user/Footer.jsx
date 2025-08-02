@@ -113,9 +113,7 @@ const Footer = () => {
       >
         <div className="mx-auto max-w-7xl px-2 flex flex-col md:flex-row justify-between items-center text-sm text-neutral-300 text-center gap-2">
           <span>
-            © {new Date().getFullYear()}{" "}
-            {appConfig ? appConfig.name : "K-Chord (Pvt) Ltd"}. All rights
-            reserved.
+            © {new Date().getFullYear()} K-Chord (Pvt) Ltd. All rights reserved.
           </span>
           <span>
             System Design & Developed by{" "}
