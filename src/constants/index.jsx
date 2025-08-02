@@ -1,5 +1,3 @@
-import default_logo from "/hospital/logo/default.png";
-import arogya_banner from "../assets/company/banner.png";
 import channeling from "../assets/icons/channeling.png";
 import channel_history from "../assets/icons/channel_history.png";
 import pharmacy from "../assets/icons/pharmacy.png";
@@ -23,8 +21,7 @@ export const Company = {
             to easily book appointments with trusted doctors from anywhere`,
   proud: `Proud to be Sri Lanka’s most trusted hospital for 
             compassionate and quality healthcare`,
-  logo: default_logo,
-  banner: arogya_banner,
+
   services: [
     {
       service: "Channeling",

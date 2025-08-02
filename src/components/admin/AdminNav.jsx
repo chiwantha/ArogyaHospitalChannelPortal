@@ -1,14 +1,16 @@
 // import { useState } from "react";
 import { FaBars } from "react-icons/fa";
-import { Company } from "../../constants";
 import Button from "../common/Button";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { IoClose } from "react-icons/io5";
 import { toast } from "react-toastify";
 import { useSidebar } from "../../Context/SidebarContext";
+import { useContext } from "react";
+import { ConfigContext } from "../../Context/configContext";
 
 const Navbar = () => {
+  const { appConfig } = useContext(ConfigContext);
   const [IsSubMenu, setIsSubMenu] = useState(false);
   const { toggleSidebar } = useSidebar();
 
@@ -25,7 +27,12 @@ const Navbar = () => {
       >
         {/* <span className="text-[#0460D9] text-2xl font-bold">AROGYA</span> */}
         <Link to={"/admin"}>
-          <img src={Company.logo} width={100} height={100} alt="" />
+          <img
+            src={`/hospital/logo/${appConfig ? appConfig.logo : "default.png"}`}
+            width={100}
+            height={100}
+            alt=""
+          />
         </Link>
 
         <div className="">

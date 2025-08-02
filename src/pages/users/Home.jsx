@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import IconButton from "../../components/user/IconButton";
+import IconButton from "../../components/common/IconButton";
 import TopImageContainer from "../../components/user/TopImageContainer";
 import { Company, Menu } from "../../constants";
 import { ConfigContext } from "../../Context/configContext";

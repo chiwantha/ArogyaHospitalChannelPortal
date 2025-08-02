@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../../axios";
 import AppointmentCard from "../../../components/common/AppointmentCard";
+import { ConfigContext } from "../../../Context/configContext";
 
 const AppointmentCheckList = () => {
+  const { appConfig } = useContext(ConfigContext);
+
   const { data, isLoading, error } = useQuery({
     queryKey: ["appointmentListAdmin"],
     queryFn: async () => {
-      const res = await makeRequest.get("/appointment/reachAdmin");
+      const res = await makeRequest.post("/appointment/reachAdmin", {
+        hospital_id: appConfig ? appConfig.id : "0",
+      });
       return res.data;
     },
   });

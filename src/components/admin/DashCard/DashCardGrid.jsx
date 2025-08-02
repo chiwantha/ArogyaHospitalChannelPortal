@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import DashValueCard from "./DashValueCard";
 import { makeRequest } from "../../../axios";
 import { useQuery } from "@tanstack/react-query";
@@ -12,12 +12,16 @@ import Session from "../../../assets/res/dash/session.png";
 import Sale from "../../../assets/res/dash/sale.png";
 import Sms from "../../../assets/res/dash/sms.png";
 import Skeleton from "../../common/Skeliton";
+import { ConfigContext } from "../../../Context/configContext";
 
 const DashCardGrid = () => {
+  const { appConfig } = useContext(ConfigContext);
   const { data, isLoading } = useQuery({
     queryKey: ["dashCounts"],
     queryFn: async () => {
-      const res = await makeRequest.get("/dashboard/counts");
+      const res = await makeRequest.post("/dashboard/counts", {
+        hospital_id: appConfig ? appConfig.id : "0",
+      });
       return res.data;
     },
   });

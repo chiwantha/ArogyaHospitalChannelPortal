@@ -20,9 +20,10 @@ const MyAppointment = () => {
     mutate: reachData,
   } = useMutation({
     mutationFn: async () => {
-      const res = await makeRequest.get(
-        `/appointment/reach?contact=${searchQuery}`
-      );
+      const res = await makeRequest.post(`/appointment/reach`, {
+        contact: searchQuery,
+        hospital_id: appConfig ? appConfig.id : "0",
+      });
       return res.data;
     },
   });

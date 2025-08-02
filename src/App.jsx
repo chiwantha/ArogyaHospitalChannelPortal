@@ -21,11 +21,10 @@ import AdminLogin from "./pages/admin/auth/AdminLogin";
 import AdminLayout from "./layouts/AdminLayout";
 import UserLayout from "./layouts/UserLayout";
 import { ConfigContext } from "./Context/configContext";
+import AdminPannels from "./pages/admin/AdminPannels";
 
 const App = () => {
   const { currentUser } = useContext(AuthContext);
-  const { appConfig } = useContext(ConfigContext);
-  console.log(appConfig);
 
   const ProtectUserRoute = ({ children }) => {
     if (currentUser) {
@@ -91,6 +90,10 @@ const App = () => {
         {
           path: "removed",
           element: <RemovedAppoiment />,
+        },
+        {
+          path: "apps",
+          element: <AdminPannels />,
         },
       ],
     },

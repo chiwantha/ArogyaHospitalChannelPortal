@@ -5,6 +5,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import { GoHomeFill } from "react-icons/go";
 import { FiSettings } from "react-icons/fi";
 import { BiLogOut } from "react-icons/bi";
+import { FaStethoscope } from "react-icons/fa";
 
 import { MdEventNote, MdAssessment } from "react-icons/md";
 import { useSidebar } from "../../Context/SidebarContext";
@@ -13,8 +14,8 @@ import { useContext } from "react";
 
 const sideBar = [
   {
-    title: "Portal",
-    link: "/",
+    title: "Pannel",
+    link: "apps",
     icon: <GoHomeFill />,
   },
   {
@@ -56,6 +57,11 @@ const sideBar = [
     title: "Settings",
     link: "/admin/settings",
     icon: <FiSettings />,
+  },
+  {
+    title: "Portal",
+    link: "/",
+    icon: <FaStethoscope />,
   },
 ];
 
