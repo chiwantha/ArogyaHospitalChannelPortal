@@ -1,12 +1,26 @@
+import { useContext } from "react";
+import { ConfigContext } from "../../Context/configContext";
+import { ColorPallet } from "../../constants";
+
 const Button = ({ title, onClick, bg, pd }) => {
+  const { appConfig } = useContext(ConfigContext);
+
+  const defaultBg = `${ColorPallet.primary_btn} ${ColorPallet.primary_btn_hover} ${ColorPallet.primary_btn_text}`;
+
+  const backgroundClasses = bg
+    ? bg
+    : appConfig
+    ? `${appConfig.primary_btn} ${appConfig.primary_btn_hover} ${appConfig.primary_btn_text}`
+    : defaultBg;
+
   return (
     <div
       onClick={onClick}
-      className={`${
-        bg ? bg : "bg-[#0460D9]  hover:bg-[#044ba8] text-white"
-      } rounded-lg ${pd ? pd : ` px-3 py-1`} transition-colors duration-300`}
+      className={`${backgroundClasses} rounded-lg ${
+        pd ? pd : "px-3 py-1"
+      } transition-colors duration-300 cursor-pointer`}
     >
-      <span className="font-bold">{title ? title : "Button"}</span>
+      <span className="font-bold">{title || "Button"}</span>
     </div>
   );
 };

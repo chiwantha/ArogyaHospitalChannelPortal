@@ -57,6 +57,40 @@ export const Company = {
   ],
 };
 
+export const ColorPallet = {
+  //arogya
+  theme: `bg-[#0460D9]`, // main theme,
+  theme_text: `text-[#0460D9]`,
+  theme_hover: `hover:bg-[#0460D9]`, // main theme hover
+  theme_border: `border-[#0460D9]`,
+  action: `bg-[#FFC935]`, // main action ( for background sometimes )
+  action_text: `text-[#FFC935]`, // action text for topics sometimes
+  theme_dark: `bg-[#0349A4]`, // theme color little bit darker
+  primary_btn: `bg-[#0460D9]`,
+  primary_btn_hover: `hover:bg-[#0B4A9C]`,
+  primary_btn_text: `text-[#FFFFFF]`,
+  secondary_btn: `bg-[#4CB847]`,
+  secondary_btn_hover: `hover:bg-[#00A63E]`,
+  secondary_btn_text: `text-[#FFFFFF]`,
+};
+
+export const ColorPallet2 = {
+  //prime
+  theme: `bg-[#0073C4]`, // main theme
+  theme_text: `text-[#0073C4]`,
+  theme_hover: `hover:bg-[#0073C4]`, // main theme hover
+  theme_border: `border-[#0073C4]`,
+  action: `bg-[#CDF50F]`, // main action ( for background sometimes )
+  action_text: `text-[#CDF50F]`, // action text for topics sometimes
+  theme_dark: `bg-[#005A9D]`, // theme color little bit darker
+  primary_btn: `bg-[#0073C4]`,
+  primary_btn_hover: `hover:bg-[#0269A0]`,
+  primary_btn_text: `text-[#ffffff]`,
+  secondary_btn: `bg-[#5BC443]`,
+  secondary_btn_hover: `hover:bg-[#3EA130]`,
+  secondary_btn_text: `text-[#1a1a1a]`,
+};
+
 export const Specialization = [
   {
     id: 1,

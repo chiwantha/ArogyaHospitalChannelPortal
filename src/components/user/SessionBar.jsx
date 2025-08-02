@@ -3,10 +3,15 @@ import Button from "../common/Button";
 // eslint-disable-next-line no-unused-vars
 import { motion } from "framer-motion";
 import ChannelForm from "./ChannelForm";
+import { useContext } from "react";
+import { ConfigContext } from "../../Context/configContext";
+import { ColorPallet } from "../../constants";
 
 const SessionBar = ({ session_data }) => {
+  const { appConfig } = useContext(ConfigContext);
   const { id, day, start_time, type, fee } = session_data;
   const [isOpen, setIsOpen] = useState(false);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -23,7 +28,9 @@ const SessionBar = ({ session_data }) => {
       >
         {/* Left Indicator */}
         <span
-          className="absolute left-0 top-1/2 -translate-y-1/2 w-2 h-8 rounded-r bg-[#4DB847]"
+          className={`${
+            appConfig ? appConfig.secondary_btn : ColorPallet.secondary_btn
+          } absolute left-0 top-1/2 -translate-y-1/2 w-2 h-8 rounded-r `}
           aria-hidden="true"
         />
 
@@ -37,7 +44,11 @@ const SessionBar = ({ session_data }) => {
         {/* Time */}
         <div className="flex flex-col items-center justify-center border-gray-300 border-r sm:border-0 md:border-r">
           <span className="text-sm font-medium text-gray-700">Time</span>
-          <span className="text-lg font-extrabold text-[#0560D9]">
+          <span
+            className={`text-lg font-extrabold ${
+              appConfig ? appConfig.theme_text : ColorPallet.theme_text
+            }`}
+          >
             {start_time ? start_time.slice(0, 8) : "00:00 - 00:00"}
           </span>
           <span className="text-sm font-semibold text-gray-600">
@@ -67,7 +78,11 @@ const SessionBar = ({ session_data }) => {
           ) : (
             <Button
               title="Book Now"
-              bg="bg-[#4DB847] text-white px-2 py-1 hover:bg-green-600 rounded-lg"
+              bg={`${
+                appConfig
+                  ? `${appConfig.secondary_btn} ${appConfig.secondary_btn_hover} ${appConfig.secondary_btn_text}`
+                  : `${ColorPallet.secondary_btn} ${ColorPallet.secondary_btn_hover} ${ColorPallet.secondary_btn_text}`
+              } px-2 py-1 rounded-lg`}
               onClick={() => {
                 setIsOpen(!isOpen);
               }}

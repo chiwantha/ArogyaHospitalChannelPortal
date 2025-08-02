@@ -1,11 +1,16 @@
 import React from "react";
-import { Instructions } from "../../constants";
+import { ColorPallet, Instructions } from "../../constants";
+import { useContext } from "react";
+import { ConfigContext } from "../../Context/configContext";
 
 const InstructuonsCard = () => {
+  const { appConfig } = useContext(ConfigContext);
   return (
     <div
-      className="p-4 bg-[#0560D9] flex flex-col items-center
-     justify-center text-center rounded-lg space-y-4"
+      className={`p-4 ${
+        appConfig ? appConfig.theme : ColorPallet.theme
+      } flex flex-col items-center
+     justify-center text-center rounded-lg space-y-4`}
     >
       {/* Topic */}
       <div className="text-white font-bold text-xl">

@@ -8,6 +8,9 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import SubmitSuccessfull from "./SubmitSuccessfull";
 import "react-datepicker/dist/react-datepicker.css";
+import { useContext } from "react";
+import { ConfigContext } from "../../Context/configContext";
+import { ColorPallet } from "../../constants";
 
 const dayMap = {
   Sunday: 0,
@@ -20,6 +23,7 @@ const dayMap = {
 };
 
 const ChannelForm = ({ session_id, day, setStatus }) => {
+  const { appConfig } = useContext(ConfigContext);
   const allowedDay = dayMap[day];
   const [isSuccess, setisSuccess] = useState(false);
   const queryClient = useQueryClient();
@@ -131,7 +135,13 @@ const ChannelForm = ({ session_id, day, setStatus }) => {
               <div>
                 <span className="text-2xl font-black uppercase text-gray-500">
                   Channel /{" "}
-                  <span className="text-[#0560D9]">{day || "Unknown"}</span>
+                  <span
+                    className={
+                      appConfig ? appConfig.theme_text : ColorPallet.theme_text
+                    }
+                  >
+                    {day || "Unknown"}
+                  </span>
                 </span>
               </div>
               <Button
@@ -248,14 +258,20 @@ const ChannelForm = ({ session_id, day, setStatus }) => {
               {isPending ? (
                 <Button
                   title={"Wait ..... !"}
-                  bg={
-                    "py-2 bg-[#4DB847] text-white hover:bg-[#00A63E] cursor-not-allowed animate-pulse"
-                  }
+                  bg={`py-2 ${
+                    appConfig
+                      ? `${appConfig.secondary_btn} ${appConfig.secondary_btn_hover} ${appConfig.secondary_btn_text}`
+                      : `${ColorPallet.secondary_btn} ${ColorPallet.secondary_btn_hover} ${ColorPallet.secondary_btn_text}`
+                  } cursor-not-allowed animate-pulse`}
                 />
               ) : (
                 <Button
                   title={"Make Appointment"}
-                  bg={"py-2 bg-[#0460D9] text-white hover:bg-[#1b3961]"}
+                  bg={`py-2 ${
+                    appConfig
+                      ? `${appConfig.primary_btn} ${appConfig.primary_btn_hover} ${appConfig.primary_btn_text}`
+                      : `${ColorPallet.primary_btn} ${ColorPallet.primary_btn_hover} ${ColorPallet.primary_btn_text}`
+                  }`}
                   onClick={handleSubmit}
                 />
               )}

@@ -3,8 +3,12 @@ import React from "react";
 import Button from "../common/Button";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
+import { useContext } from "react";
+import { ConfigContext } from "../../Context/configContext";
+import { ColorPallet } from "../../constants";
 
 const DoctorCard = ({ id, name, specialization, img, gender }) => {
+  const { appConfig } = useContext(ConfigContext);
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -19,7 +23,8 @@ const DoctorCard = ({ id, name, specialization, img, gender }) => {
         <img
           src={`/doctors/${img}`}
           alt={`Dr. ${name}`}
-          className="w-full h-full object-cover rounded-full border-2 border-[#0560D9]"
+          className={`w-full h-full object-cover rounded-full border-2 
+            ${appConfig ? appConfig.theme_border : ColorPallet.theme_border}`}
         />
       </div>
 

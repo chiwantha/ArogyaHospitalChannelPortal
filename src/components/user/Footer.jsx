@@ -1,5 +1,5 @@
-import React, { useContext } from "react";
-import { Company } from "../../constants";
+import { useContext } from "react";
+import { ColorPallet, Company } from "../../constants";
 import { ConfigContext } from "../../Context/configContext";
 
 const Footer = () => {
@@ -34,7 +34,9 @@ const Footer = () => {
   return (
     <footer className="w-full border-t-2 shadow-md border-gray-500">
       {/* top strip */}
-      <div className="bg-[#0460D9] py-4 ">
+      <div
+        className={`${appConfig ? appConfig.theme : ColorPallet.theme} py-4 `}
+      >
         <div
           className="mx-auto max-w-7xl px-2 flex flex-col items-center 
         justify-center space-y-4"
@@ -50,8 +52,9 @@ const Footer = () => {
             {/* hospital breef */}
             <div
               className={`flex flex-col items-center justify-center 
-            space-y-3 p-3 rounded-lg text-center`}
-              style={{ backgroundColor: appConfig?.action_color || "#F1F5F9" }}
+            space-y-3 p-3 rounded-lg text-center ${
+              appConfig ? appConfig.action : ColorPallet.action
+            }`}
             >
               <img
                 src={`/hospital/logo/${
@@ -69,8 +72,9 @@ const Footer = () => {
             {/* important links */}
             <div className="flex flex-col items-end text-right">
               <h2
-                className="text-2xl font-black uppercase mb-1"
-                style={{ color: appConfig?.action_color || "#FFC935" }}
+                className={`text-2xl font-black uppercase mb-1 ${
+                  appConfig ? appConfig.action_text : ColorPallet.action_text
+                }`}
               >
                 {appConfig ? appConfig.name.split(" ")[0] : "Hospital"} Links
               </h2>
@@ -86,13 +90,14 @@ const Footer = () => {
             border-neutral-300/50 md:border-l md:pl-4"
             >
               <h2
-                className="text-2xl font-black uppercase mb-1"
-                style={{ color: appConfig?.action_color || "#FFC935" }}
+                className={`text-2xl font-black uppercase mb-1 ${
+                  appConfig ? appConfig.action_text : ColorPallet.action_text
+                }`}
               >
                 Contact {appConfig ? appConfig.name.split(" ")[0] : "Hospital"}
               </h2>
               {Contact.map((item, index) => (
-                <span className="text-neutral-200 mb-1" key={index}>
+                <span className="text-neutral-100 mb-1" key={index}>
                   - {item}
                 </span>
               ))}
@@ -101,7 +106,11 @@ const Footer = () => {
         </div>
       </div>
       {/* bottom strip */}
-      <div className="bg-[#0349A4] py-4">
+      <div
+        className={`${
+          appConfig ? appConfig.theme_dark : ColorPallet.theme_dark
+        } py-4 `}
+      >
         <div className="mx-auto max-w-7xl px-2 flex flex-col md:flex-row justify-between items-center text-sm text-neutral-300 text-center gap-2">
           <span>
             © {new Date().getFullYear()}{" "}

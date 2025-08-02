@@ -1,5 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { ColorPallet } from "../../constants";
+import { useContext } from "react";
+import { ConfigContext } from "../../Context/configContext";
 
 const IconButton = ({
   bg,
@@ -13,18 +16,26 @@ const IconButton = ({
   badgeText,
   link,
 }) => {
+  const { appConfig } = useContext(ConfigContext);
+
   // Compute background color
   const bgClass = bg
     ? bg
     : active
-    ? "bg-[#0463DF] hover:bg-[#0b4a9c]"
-    : "bg-slate-100 hover:bg-[#0463DF]";
+    ? appConfig
+      ? `${appConfig.primary_btn} ${appConfig.primary_btn_hover}`
+      : `${ColorPallet.primary_btn} ${ColorPallet.primary_btn_hover}`
+    : `bg-slate-100 ${
+        appConfig ? appConfig.theme_hover : ColorPallet.theme_hover
+      }`;
 
   // Compute text color
   const titleColor = fg
     ? fg
     : active
-    ? "text-white"
+    ? appConfig
+      ? appConfig.primary_btn_text
+      : ColorPallet.primary_btn_text
     : "text-[#0F2753] group-hover:text-white";
 
   const subtitleColor = active

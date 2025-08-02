@@ -6,9 +6,13 @@ import DoctorCard from "../../components/user/DoctorCard";
 import { useQuery } from "@tanstack/react-query";
 import { makeRequest } from "../../axios";
 import Skeleton from "../../components/common/Skeliton";
-import { Specialization } from "../../constants";
+import { ColorPallet, Specialization } from "../../constants";
+import { useContext } from "react";
+import { ConfigContext } from "../../Context/configContext";
 
 const Channeling = () => {
+  const { appConfig } = useContext(ConfigContext);
+
   const [Queryfilter, setQueryfilter] = useState({
     doctor_name: "",
     specialization: "",
@@ -74,9 +78,12 @@ const Channeling = () => {
   const { data, isLoading, isFetching, error } = useQuery({
     queryKey: ["doctorList"],
     queryFn: async () => {
-      const res = await makeRequest.get(`/doctors/list/`, {});
+      const res = await makeRequest.post(`/doctors/list/`, {
+        hospital_id: appConfig && appConfig.id,
+      });
       return res.data;
     },
+    enabled: !!appConfig?.id,
   });
 
   // Filter doctors based on search term (client-side fallback)
@@ -107,8 +114,10 @@ const Channeling = () => {
     <div className="space-y-4">
       {/* Filter Component */}
       <div
-        className="bg-[#0560D9] rounded-lg py-4 px-2 shadow-md grid grid-cols-1 
-      sm:grid-cols-2 md:grid-cols-3 gap-4"
+        className={`${
+          appConfig ? appConfig.theme : ColorPallet.theme
+        } rounded-lg py-4 px-2 shadow-md grid grid-cols-1 
+      sm:grid-cols-2 md:grid-cols-3 gap-4`}
       >
         {/* Doctor Name */}
         <div className="space-y-2">
@@ -170,7 +179,17 @@ const Channeling = () => {
           <Button
             title={"Search"}
             onClick={handleSearch}
-            bg={"bg-[#4CB847] text-center text-white font-normal py-2 w-full"}
+            bg={`${
+              appConfig ? appConfig.secondary_btn : ColorPallet.secondary_btn
+            } ${
+              appConfig
+                ? appConfig.secondary_btn_hover
+                : ColorPallet.secondary_btn_hover
+            } ${
+              appConfig
+                ? appConfig.secondary_btn_text
+                : ColorPallet.secondary_btn_text
+            } text-center font-normal py-2 w-full`}
           />
           <Button
             title={"Clear Filters"}
